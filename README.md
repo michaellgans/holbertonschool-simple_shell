@@ -1,2 +1,9 @@
 # holbertonschool-simple_shell
-Simple Shell Recreation
+
+<details><summary>Table of Functions</summary>
+  
+|Function|Prototype|
+|----------|-----------|
+|printf|`(This is the prototype)`|
+</details>
+
