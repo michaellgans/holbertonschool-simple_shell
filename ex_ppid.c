@@ -1,32 +1,20 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <sys/types.h>
+#include "main.h"
 
 /**
- * main - prints the parent pid
+ * get_pids - prints the parent pid
  * Return: 0 - child -1 error
  */
 
-int main(void)
+char *get_pids(void)
 {
-	pid_t pid = fork();
+	/* Defining Variables */
+	char *message = NULL;
 
-	if (pid == -1)
+	/* Allocate Memory */
+	message = malloc(100);
+	if (message != NULL)
 	{
-		perror("This is a spoon...");
-		return (1);
+		sprintf(message, "Child PID: %d\nPPID: %d\n", getpid(), getppid());
 	}
-	else if (pid == 0)
-	{
-		/* Child process */
-		printf("The child PID is: %d\n", getpid());
-		printf("The PPID is %d\n", getppid());
-	}
-	else
-	{
-		/*Parent Process */
-		printf("The parent PID is: %d\n", getpid());
-		printf("This is the child PID from parent: %d\n", pid);
-	}
-	return (0);
+	return (message);
 }
