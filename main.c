@@ -10,10 +10,10 @@
 int main(int argc, char **argv)
 {
 	/* Defining Variables */
-	char *print_pids, *max_pid, *prompt, *words[MAX_WORDS];
+	char *print_pids, *max_pid, *prompt, *string;
+	char **token;
 	char **arg = argv;
-	char string[];
-	int x, num_words;
+	int x;
 	(void)argc;
 
 	/* Testing get_pid func */
@@ -73,11 +73,20 @@ int main(int argc, char **argv)
 
 	/* Test String Tokens */
 	string = "I have two cats.  One is orange.";
-	num_words = split_string(string, words);
-
-	for (x = 0; x < num_words; x++)
-		printf("%s", words[x]);
-	printf("\n");
-
+	token = string_tokens(string);
+	if (token != NULL)
+	{
+		for (x = 0; token[x] != NULL; x++)
+		{
+			printf("This is inside the main for loop\n");
+			printf("%s\n", token[x]);
+			free(token[x]);
+		}
+		free(*token);
+	}
+	else
+	{
+		printf("String Tokenization Failed\n");
+	}
 	return (SUCCESS);
 }
