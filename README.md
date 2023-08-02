@@ -3,7 +3,7 @@
 ## Introduction
 > Hey there:) Thanks for checking out our shell project! Here we have constructed our own simple shell that emulates the Bourne Again Shell.
 
-## What is s shell?
+## What is a shell?
 
 ## How to download
 Go to 
