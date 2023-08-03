@@ -23,7 +23,7 @@ int simple_shell(int argc, char **argv, char **env)
 		/* Array of Structs */
 		builtInFunctions a[] = {
 			{"exit", &builtin_exit},
-			{"env", &builtin_env},
+			{"env", &builtin_env}
 		};
 		/* Interactive (person) or Non-Interactive (program) */
 		if (isatty(STDIN_FILENO))

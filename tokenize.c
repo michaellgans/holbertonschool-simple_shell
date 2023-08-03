@@ -15,16 +15,15 @@ char **tokenize(char *string)
 	int x;
 
 	/* Make a copy of the input string */
-	char *copy4Num = strdup(string);
-	char *copy4Token = strdup(string);
-	
+	char *copy4Num = strdup(string); /* counts tokens */
+	char *copy4Token = strdup(string); /* records tokens */
+
 	if (copy4Num == NULL || copy4Token == NULL)
 	{
-		perror("Copy has failed.\n");
+		perror("Error: ");
 		return (NULL);
 	}
-	/* Cut up string to count number of tokens */
-	token = strtok(copy4Num, delimiters);
+	token = strtok(copy4Num, delimiters); /* 1st copy tokenization */
 
 	while (token != NULL)
 	{
@@ -35,11 +34,10 @@ char **tokenize(char *string)
 	tokens_array = (char **)malloc((num_tokens + 1) * sizeof(char *));
 	if (tokens_array == NULL)
 	{
-		perror("Memory allocation failed.\n");
+		perror("Error: ");
 		return (NULL);
 	}
-	/* Cut up second copy for tokenization */
-	token = strtok(copy4Token, delimiters);
+	token = strtok(copy4Token, delimiters); /* 2nd copy tokenization */
 
 	for (x = 0; x < num_tokens; x++)
 	{
@@ -48,7 +46,6 @@ char **tokenize(char *string)
 	}
 	tokens_array[x] = NULL;
 
-	free(copy4Num);
-	/* free(copy4Token); */
+	free(copy4Num); /* free(copy4Token); */
 	return (tokens_array);
 }

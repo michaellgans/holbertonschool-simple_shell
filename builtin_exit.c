@@ -7,5 +7,6 @@
 
 void builtin_exit(char **args)
 {
-
+	printf("Test: Exit was called\n");
+	exit(0);
 }

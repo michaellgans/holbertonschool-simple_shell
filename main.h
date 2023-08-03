@@ -25,11 +25,13 @@
  * @funcPtr: points to the function that runs it
  */
 
+typedef void (*builtin_func)(char **args);
+
 typedef struct built_in_functions
 {
 	const char *funcName;
 	builtin_func funcPtr;
-} builtInFunctions
+} builtInFunctions;
 
 /* Prototypes */
 char *get_pids(void);
@@ -39,6 +41,6 @@ char **tokenize(char *string);
 int execute_program(void);
 void builtin_exit(char **args);
 void builtin_env(char **args);
-void find_builtin(char **args)
+void find_builtin(char **args);
 
 #endif
