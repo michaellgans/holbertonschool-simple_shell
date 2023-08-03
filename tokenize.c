@@ -1,15 +1,15 @@
 #include "main.h"
 
 /**
- * string_tokens - tokenizes an input string
+ * tokenize - tokenizes an input string
  * @string: pointer to the beginning of the string
  * Return: 0/1
  */
 
-char **string_tokens(char *string)
+char **tokenize(char *string)
 {
-	char **tokens = NULL;
-	const char *delimiters = " ";
+	char **tokens_array = NULL;
+	const char *delimiters = WHITESPACE1;
 	int num_tokens = 0;
 	char *token;
 	int x;
@@ -32,23 +32,23 @@ char **string_tokens(char *string)
 		token = strtok(NULL, delimiters);
 	}
 	/* Allocate memory for new array */
-	tokens = (char **)malloc((num_tokens + 1) * sizeof(char *));
-	if (tokens == NULL)
+	tokens_array = (char **)malloc((num_tokens + 1) * sizeof(char *));
+	if (tokens_array == NULL)
 	{
 		perror("Memory allocation failed.\n");
-		free(tokens);
 		return (NULL);
 	}
 	/* Cut up second copy for tokenization */
 	token = strtok(copy4Token, delimiters);
-	printf("Number of tokens: %d\n", num_tokens);
+
 	for (x = 0; x < num_tokens; x++)
 	{
-		tokens[x] = token;
+		tokens_array[x] = token;
 		token = strtok(NULL, delimiters);
-		printf("This is the for loop\n");
 	}
-	tokens[x] = NULL;
+	tokens_array[x] = NULL;
 
-	return (tokens);
+	free(copy4Num);
+	/* free(copy4Token); */
+	return (tokens_array);
 }

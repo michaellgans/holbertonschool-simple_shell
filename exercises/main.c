@@ -13,7 +13,7 @@ int main(int argc, char **argv)
 	char *print_pids, *max_pid, *prompt, *string;
 	char **token;
 	char **arg = argv;
-	int x;
+	int x, child;
 	(void)argc;
 
 	/* Testing get_pid func */
@@ -78,15 +78,25 @@ int main(int argc, char **argv)
 	{
 		for (x = 0; token[x] != NULL; x++)
 		{
-			printf("This is inside the main for loop\n");
 			printf("%s\n", token[x]);
-			free(token[x]);
 		}
-		free(*token);
+		/*for (x = 0; token[x] != NULL; x++)*/
+			/*free(token[x]);*/
 	}
 	else
 	{
 		printf("String Tokenization Failed\n");
 	}
+	free(token);
+
+	printf(br);
+
+	/* Test execute_program */
+	child = execute_program();
+	if (child != FAILURE)
+	{
+		printf("Program returned:%d\n", child);
+	}
+
 	return (SUCCESS);
 }
