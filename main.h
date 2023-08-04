@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/wait.h>
+#include <stdbool.h>
 
 /* Macros */
 #define SUCCESS 0
@@ -18,20 +19,6 @@
 #define WHITESPACE2 " \n\t:"
 
 /* Structures */
-
-/**
- * struct built_in_functions - holds built in functions
- * @funcName: points to the operation name
- * @funcPtr: points to the function that runs it
- */
-
-typedef void (*builtin_func)(char **args);
-
-typedef struct built_in_functions
-{
-	const char *funcName;
-	builtin_func funcPtr;
-} builtInFunctions;
 
 /* Prototypes */
 char *get_pids(void);

@@ -98,5 +98,8 @@ int main(int argc, char **argv)
 		printf("Program returned:%d\n", child);
 	}
 
+	printf(br);
+
+	/* Test 
 	return (SUCCESS);
 }
