@@ -45,7 +45,8 @@ int main(int argc, char **argv, char **env)
 		}
 		if (strcmp(tokens_array[0], "exit") == 0)
 		{
-			exit(0);
+			free(line);
+			exit(SUCCESS);
 		}
 		free(tokens_array);
 		free(line);
