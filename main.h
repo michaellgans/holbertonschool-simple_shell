@@ -21,13 +21,10 @@
 /* Structures */
 
 /* Prototypes */
-/* char *get_pids(void); */
-/* char *pid_max(void); */
-/* char *read_line(void); */
 char **tokenize(char *string, char *delimiters, char **tokens_array);
 int execute_program(void);
-/* void builtin_exit(char **args); */
-/* void builtin_env(char **args); */
-/* void find_builtin(char **args); */
+void free_string_array(char **array);
+void free_string(char *str);
+int free_the_mems(char **tokens_array, char **path_array);
 
 #endif

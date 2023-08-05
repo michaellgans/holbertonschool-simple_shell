@@ -11,13 +11,13 @@
 char **tokenize(char *string, char *delimiters, char **tokens_array)
 {
 	int num_tokens = 0; /* Number of tokens */
-	char *token; /* Pointer to first token */
+	char *token = NULL; /* Pointer to first token */
 
 	token = strtok(string, delimiters); /* cut out first token */
 
 	if (token == NULL) /* Edge case for no string */
 	{
-		perror("No input given");
+		perror("Error: ");
 		exit(SUCCESS);
 	}
 
