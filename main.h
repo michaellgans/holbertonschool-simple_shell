@@ -16,18 +16,18 @@
 #define FAILURE 1
 #define br "----------------------------------------\n\n"
 #define WHITESPACE1 " \n\t"
-#define WHITESPACE2 " \n\t:"
+#define WHITESPACE2 ":"
 
 /* Structures */
 
 /* Prototypes */
-char *get_pids(void);
-char *pid_max(void);
-char *read_line(void);
-char **tokenize(char *string);
+/* char *get_pids(void); */
+/* char *pid_max(void); */
+/* char *read_line(void); */
+char **tokenize(char *string, char *delimiters, char **tokens_array);
 int execute_program(void);
-void builtin_exit(char **args);
-void builtin_env(char **args);
-void find_builtin(char **args);
+/* void builtin_exit(char **args); */
+/* void builtin_env(char **args); */
+/* void find_builtin(char **args); */
 
 #endif

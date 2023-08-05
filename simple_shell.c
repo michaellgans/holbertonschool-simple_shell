@@ -1,40 +1,53 @@
 #include "main.h"
-
 /**
  * main - the main function that houses simple shell.
  * @argc: number of arguments.
- * @argv: each argument at index.
- * @env: environment
+ * @argv: array of pointers to the arguments
+ * @env: array of pointers to the enviornmental variables.
  * Return: SUCCESS/FAILURE (0/1)
  */
-
 int main(int argc, char **argv, char **env)
 {
-	/* Declare and Initialize Variables */
-	char **tokens_array; /* array of tokens */
+	char *tokens_array[20], *path_array[20]; /* array of tokens */
 	size_t length = 0; /* length of what was read */
-	char *line; /* what was read */
-	int x; /* iterations */
+	int x = 0, operation = 0; /* iterations */
+	char *line, *path; /* what was read, beginning of path*/
 	(void)argc;
 	(void)argv;
 
-	/* Start Program */
-	while (true)
+	while (true) /* Infinate loop that keeps the prog running */
 	{
+		while (env[x] != NULL) /* Check for path given */
+		{
+			if (strncmp(env[x], "PATH=", 5) == 0)
+			{
+				path = strdup((env[x] + 5)); /* Store first 5 char into path */
+				break; /* try continue here */
+			}
+			x++;
+		}
+		tokenize(path, WHITESPACE2, path_array); /* save for later */
+
 		/* Interactive (person) or Non-Interactive (program) */
 		if (isatty(STDIN_FILENO))
 			printf("$: "); /* Display curser if person */
+
 		/* Get input from user */
 		if (getline(&line, &length, stdin) == -1)
 		{
 			free(line);
-			perror("Error: ");
+			free(path);
 			exit(SUCCESS);
 		}
-		/* Tokenize Input - FREE ME */
-		tokens_array = tokenize(line);
-		if (tokens_array == NULL)
-			perror("Error: ");
+
+		/* Tokenize Input */
+		tokenize(line, WHITESPACE1, tokens_array);
+		if (tokens_array[0] == NULL) /* Edge case for no input given */
+		{
+			free(path);
+			continue;
+		}
+
 		/* Is the command a built in function? */
 		if (strcmp(tokens_array[0], "env") == 0)
 		{
@@ -42,15 +55,22 @@ int main(int argc, char **argv, char **env)
 			{
 				printf("%s\n", env[x]);
 			}
+			free(path);
+			continue;
 		}
+
 		if (strcmp(tokens_array[0], "exit") == 0)
 		{
 			free(line);
+			free(path);
 			exit(SUCCESS);
 		}
-		free(tokens_array);
-		free(line);
-		/* NOT Built In Functions */
+
+		/* Check for access */
+		/*if (access(tokens_array[0], X_OK) == 0)
+			EXECUTE PROGRAM HERE(path, tokens_array[0], args);
+		else
+			operation = CHECK PATH(path, paths_array, args); */
 	}
-	return (SUCCESS);
+	return (operation);
 }

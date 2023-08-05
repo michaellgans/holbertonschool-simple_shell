@@ -3,49 +3,32 @@
 /**
  * tokenize - tokenizes an input string
  * @string: pointer to the beginning of the string
+ * @delimiters: how to break up tokens
+ * @token_array: where to store tokens
  * Return: 0/1
  */
 
-char **tokenize(char *string)
+char **tokenize(char *string, char *delimiters, char **tokens_array)
 {
-	char **tokens_array = NULL;
-	const char *delimiters = WHITESPACE1;
-	int num_tokens = 0;
-	char *token;
-	int x;
+	int num_tokens = 0; /* Number of tokens */
+	char *token; /* Pointer to first token */
 
-	/* Make a copy of the input string */
-	char *copy4Num = strdup(string); /* counts tokens */
-	char *copy4Token = strdup(string); /* records tokens */
+	token = strtok(string, delimiters); /* cut out first token */
 
-	if (copy4Num == NULL || copy4Token == NULL)
+	if (token == NULL) /* Edge case for no string */
 	{
-		perror("Error: ");
-		return (NULL);
+		perror("No input given");
+		exit(SUCCESS);
 	}
-	token = strtok(copy4Num, delimiters); /* 1st copy tokenization */
 
-	while (token != NULL)
+	while (token != NULL) /* Go until NULL is found */
 	{
-		num_tokens++;
-		token = strtok(NULL, delimiters);
+		tokens_array[num_tokens] = token; /* Set first token into array */
+		num_tokens++; /* count tokens */
+		token = strtok(NULL, delimiters); /* cut out next token */
 	}
-	/* Allocate memory for new array */
-	tokens_array = (char **)malloc((num_tokens + 1) * sizeof(char *));
-	if (tokens_array == NULL)
-	{
-		perror("Error: ");
-		return (NULL);
-	}
-	token = strtok(copy4Token, delimiters); /* 2nd copy tokenization */
 
-	for (x = 0; x < num_tokens; x++)
-	{
-		tokens_array[x] = token;
-		token = strtok(NULL, delimiters);
-	}
-	tokens_array[x] = NULL;
+	tokens_array[num_tokens] = NULL;
 
-	free(copy4Num); /* free(copy4Token); */
 	return (tokens_array);
 }
