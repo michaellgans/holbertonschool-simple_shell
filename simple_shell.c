@@ -58,10 +58,10 @@ int main(int argc, char **argv, char **env)
 		tokenize(path, WHITESPACE2, path_array); /* Tokenize Path */
 
 		/* Check for access */
-		/*if (access(tokens_array[0], X_OK) == 0)
-			EXECUTE PROGRAM HERE(path, tokens_array[0], args);
+		if (access(tokens_array[0], X_OK) == 0)
+			execute_program(path, tokens_array[0], tokens_array);
 		else
-			operation = CHECK PATH(path, paths_array, args); */
+			operation = find_path(path, paths_array, tokens_array);
 	}
 	free_the_mems(tokens_array, path_array);
 	exit(EXIT_SUCCESS);

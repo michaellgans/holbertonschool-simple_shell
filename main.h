@@ -22,9 +22,10 @@
 
 /* Prototypes */
 char **tokenize(char *string, char *delimiters, char **tokens_array);
-int execute_program(void);
 void free_string_array(char **array);
 void free_string(char *str);
 int free_the_mems(char **tokens_array, char **path_array);
+int execute_program(char *op_path, char **string_array);
+int find_path(char *path, char **path_array, char **args_array);
 
 #endif

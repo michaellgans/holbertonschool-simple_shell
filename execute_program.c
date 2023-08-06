@@ -2,44 +2,51 @@
 
 /**
  * execute_program - executes a program in a child process
+ * @op_path: point to path containing the operation
+ * @string_array: tokenized array
  * Return: 1/0
  */
 
-int execute_program(void)
+int execute_program(char *op_path, char **string_array)
 {
 	/* Declare and Initialize Variables */
 	pid_t pid;
-	int x, status;
-	const char *pathname = "/bin/ls";
-	char *const argv[] = {"/bin/ls", "-l", "/usr/", NULL};
-	char *const env[] = {NULL};
-	int num_runs = 5;
+	int status, exit_status;
 
-	/* fork into child and parent */
-	for (x = 0; x < num_runs; x++)
+	/* Fork process into child and parent */
+	pid = fork();
+
+	if (pid == -1)
 	{
-		printf("This is before we fork\n");
-
-		pid = fork();
-		if (pid == -1)
+		perror("Error: ");
+		return (FAILURE); /* fork failed */
+	}
+	if (pid == 0) /* child process */
+	{
+		execve(op_path, string_array, NULL); /* run program */
+		perror("Error: ");
+		exit (FAILURE); /* execve failed */
+	}
+	else /* parent process */
+	{
+		if (wait(&status) == -1)
 		{
-			perror("Fork did not work\n");
-			return (FAILURE);
-		}
-		/* run a program */
-		if (pid > 0) /* indicates it's a parent */
-		{
-			/* make parent wait */
-			wait(&status);
-			printf("Child %i exited with status: %i\n", x + 1, WEXITSTATUS(status));
-		}
-		else if (pid == 0)
-		{
-			execve(pathname, argv, env); /* run ls */
-			/* return output from child to parent */
-			perror("Program didn't run.\n");
-			return (FAILURE);
+			perror("Error: ");
+			return (FAILURE); /* wait failed */
 		}
 	}
-	return (SUCCESS);
+
+	/* Check for normal termination */
+	if (WIFEXITED(status))
+	{
+		exit_status = WEXITSTATUS(status);
+		if (exit_status == 0)
+			return (SUCCESS); /* executed correctly */
+		else
+			return (FAILURE); /* execute failed */
+	}
+	if (WIFSIGNALED(status)) /* child executed by signal */
+		return (FAILURE); /* child killed by signal */
+
+	return (FAILURE); /* all other cases of failure */
 }
