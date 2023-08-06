@@ -10,6 +10,7 @@
 #include <string.h>
 #include <sys/wait.h>
 #include <stdbool.h>
+#include <sys/stat.h>
 
 /* Macros */
 #define SUCCESS 0

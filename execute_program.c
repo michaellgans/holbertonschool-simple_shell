@@ -25,7 +25,7 @@ int execute_program(char *op_path, char **string_array)
 	{
 		execve(op_path, string_array, NULL); /* run program */
 		perror("Error: ");
-		exit (FAILURE); /* execve failed */
+		return (FAILURE); /* execve failed */
 	}
 	else /* parent process */
 	{

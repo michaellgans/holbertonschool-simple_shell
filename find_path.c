@@ -13,8 +13,9 @@ int find_path(char *path, char **path_array, char **args_array)
 	int x = 0; /* iterator */
 	char *temp = NULL; /* temporary pointer */
 	struct stat info; /* stores attributes or details */
+	(void)path;
 
-	while (parth_array[x] != NULL)
+	while (path_array[x] != NULL)
 	{
 		temp = malloc(strlen(args_array[0]) + strlen(path_array[x]) + 2);
 		strcpy(temp, path_array[x]); /* start array */
@@ -22,7 +23,7 @@ int find_path(char *path, char **path_array, char **args_array)
 		strcat(temp, args_array[0]); /* add operation */
 		if (stat(temp, &info) == 0) /* does the program exist? */
 		{
-			execute_program(path, temp, args_array);
+			execute_program(temp, args_array);
 			free(temp);
 			return (SUCCESS);
 		}

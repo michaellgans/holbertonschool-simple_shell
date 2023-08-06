@@ -59,9 +59,9 @@ int main(int argc, char **argv, char **env)
 
 		/* Check for access */
 		if (access(tokens_array[0], X_OK) == 0)
-			execute_program(path, tokens_array[0], tokens_array);
+			execute_program(tokens_array[0], tokens_array);
 		else
-			operation = find_path(path, paths_array, tokens_array);
+			operation = find_path(path, path_array, tokens_array);
 	}
 	free_the_mems(tokens_array, path_array);
 	exit(EXIT_SUCCESS);
