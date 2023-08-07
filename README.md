@@ -67,9 +67,10 @@ A shell is a program that provides a command-line interface for users to interac
 </details>
 
 ## How to download
-Go to 
+Go to https://github.com/michaellgans/holbertonschool-simple_shell/tree/main
 
 Download files or copy the clone URL
+![github_how_to](https://github.com/michaellgans/holbertonschool-simple_shell/assets/126801159/2000dcfb-498b-4f79-81d5-a048fca9bd57)
 
 ## How to use program
 ##### Flowchart
