@@ -1,21 +1,21 @@
 #include "main.h"
 
-/** cleanstr - removes newline characters from user input
+/**
+ * cleanstr - removes newline chars from user input
  * @line: user input line
- * Return: 0/1
+ * Return: always 0
  */
-
 int cleanstr(char *line)
 {
-	int x = 0;
+	int i = 0;
 
-	while (line[x])
+	while (line[i])
 	{
-		if(line[x] == '\n')
+		if (line[i] == '\n')
 		{
-			line[x] = '\0';
+			line[i] = '\0';
 		}
-		x++;
+		i++;
 	}
-	return (SUCCESS);
+	return (0);
 }
