@@ -8,28 +8,38 @@
  */
 int main(int argc, char **argv, char **env)
 {
-	char *tokens_array[20] = {NULL}, *path_array[20] = {NULL};
-	size_t length = 0; /* length of what was read */
-	int x = 0, operation = 0; /* iterations */
-	char *line = NULL, *path = NULL; /* what was read, beginning of path*/
+	char **tokens_array = NULL, **path_array = NULL;
+	size_t length = 0;
+	int x = 0, operation = 0;
+	char *line = NULL, *path = NULL;
 	(void)argc;
 	(void)argv;
 
-	while (true) /* Infinate loop that keeps the prog running */
+	while (true) /* Infinate loop: keeps program running */
 	{
 		/* Interactive (person) or Non-Interactive (program) */
 		if (isatty(STDIN_FILENO))
+		{
 			printf("$: "); /* Display curser if person */
+		}
 
 		/* Get input from user */
 		if (getline(&line, &length, stdin) == -1)
+		{
+			free(line);
+			/* free(path); */
 			break;
+		}
 
-		/* Tokenize Input */
-		tokenize(line, WHITESPACE1, tokens_array);
+		cleanstr(line); /* Remove newline char */
 
-		if (tokens_array[0] == NULL) /* Edge case for no input given */
+		if (!tok_num(line, " ")) /* Check for empty line */
+		{
+			/* free(line); */
 			continue;
+		}
+
+		tokens_array = tokstr(line, WHITESPACE1); /* HEEEEEEEEEERE */
 
 		/* Is the command a built in function? */
 		if (strcmp(tokens_array[0], "env") == 0)
@@ -38,14 +48,18 @@ int main(int argc, char **argv, char **env)
 			{
 				printf("%s\n", env[x]);
 			}
+			free_string_array(tokens_array);
 			continue;
 		}
 
 		if (strcmp(tokens_array[0], "exit") == 0)
+		{
+			free_string_array(tokens_array);
 			break;
-
+		}
 		x = 0;
 
+		/* Not built in functions */
 		while (env[x] != NULL) /* Check for path given */
 		{
 			if (strncmp(env[x], "PATH=", 5) == 0)
@@ -55,15 +69,23 @@ int main(int argc, char **argv, char **env)
 			}
 			x++;
 		}
-		tokenize(path, WHITESPACE2, path_array); /* Tokenize Path */
+		path_array = tokstr(path, WHITESPACE2); /* HEEEEEEEEEERE */
+		free(path);
 
 		/* Check for access */
 		if (access(tokens_array[0], X_OK) == 0)
+		{
 			execute_program(tokens_array[0], tokens_array);
+		}
 		else
-			operation = find_path(path, path_array, tokens_array);
+		{
+			operation = find_path(path_array, tokens_array);
+		}
+		/* free(path); */
+		free_string_array(tokens_array);
+		free_string_array(path_array);
+		/* free(line); */
 	}
-	free_the_mems(tokens_array, path_array);
-	exit(EXIT_SUCCESS);
+
 	return (operation);
 }

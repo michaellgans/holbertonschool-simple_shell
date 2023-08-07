@@ -17,23 +17,16 @@ int execute_program(char *op_path, char **string_array)
 	pid = fork();
 
 	if (pid == -1)
-	{
-		perror("Error: ");
 		return (FAILURE); /* fork failed */
-	}
 	if (pid == 0) /* child process */
 	{
 		execve(op_path, string_array, NULL); /* run program */
-		perror("Error: ");
 		return (FAILURE); /* execve failed */
 	}
 	else /* parent process */
 	{
 		if (wait(&status) == -1)
-		{
-			perror("Error: ");
 			return (FAILURE); /* wait failed */
-		}
 	}
 
 	/* Check for normal termination */

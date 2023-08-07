@@ -8,12 +8,11 @@
  * Return: 1/0
  */
 
-int find_path(char *path, char **path_array, char **args_array)
+int find_path(char **path_array, char **args_array)
 {
 	int x = 0; /* iterator */
 	char *temp = NULL; /* temporary pointer */
 	struct stat info; /* stores attributes or details */
-	(void)path;
 
 	while (path_array[x] != NULL)
 	{
