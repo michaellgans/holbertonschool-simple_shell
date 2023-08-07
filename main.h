@@ -27,5 +27,6 @@ int cleanstr(char *line);
 int tok_num(char *str, char *delims);
 char **tokstr(char *line, char *delims);
 int substrLen(char *str, char *delims);
+char **tokenize(char *string);
 
 #endif

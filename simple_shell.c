@@ -33,13 +33,7 @@ int main(int argc, char **argv, char **env)
 
 		cleanstr(line); /* Remove newline char */
 
-		if (!tok_num(line, " ")) /* Check for empty line */
-		{
-			/* free(line); */
-			continue;
-		}
-
-		tokens_array = tokstr(line, WHITESPACE1); /* HEEEEEEEEEERE */
+		tokens_array = tokenize(line); /* HEEEEEEEEEERE */
 
 		/* Is the command a built in function? */
 		if (strcmp(tokens_array[0], "env") == 0)
@@ -69,7 +63,7 @@ int main(int argc, char **argv, char **env)
 			}
 			x++;
 		}
-		path_array = tokstr(path, WHITESPACE2); /* HEEEEEEEEEERE */
+		path_array = tokenize(path); /* HEEEEEEEEEERE */
 		free(path);
 
 		/* Check for access */
@@ -81,11 +75,10 @@ int main(int argc, char **argv, char **env)
 		{
 			operation = find_path(path_array, tokens_array);
 		}
-		/* free(path); */
-		free_string_array(tokens_array);
-		free_string_array(path_array);
-		/* free(line); */
-	}
 
+	free(tokens_array);
+	free(path_array);
+	}
 	return (operation);
 }
+
