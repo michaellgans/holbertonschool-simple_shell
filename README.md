@@ -14,16 +14,14 @@ A shell is a program that provides a command-line interface for users to interac
 <summary>General</summary>
 <br>
 
-- Allowed editors: vi, vim, emacs
-- All your files will be compiled on Ubuntu 20.04 LTS using gcc, using the option
-- Wall -Werror -Wextra -pedantic -std=gnu89
+- Allowed editors: `vi`, `vim`, `emacs`
+- All your files will be compiled on Ubuntu 20.04 LTS using `gcc`, using the option `Wall -Werror -Wextra -pedantic -std=gnu89`
 - All your files should end with a new line
-- A README.md file, at the root of the folder of the project is mandatory
-- Your code should use the Betty style. It will be checked using betty-style.pl and betty-doc.pl
+- A `README.md` file, at the root of the folder of the project is mandatory
+- Your code should use the `Betty` style. It will be checked using [betty-style.pl](https://github.com/hs-hq/Betty/blob/main/betty-style.pl) and [betty-doc.pl](https://github.com/hs-hq/Betty/blob/main/betty-doc.pl)
 - Your shell should not have any memory leaks
 - No more than 5 functions per file
 - All your header files should be include guarded
-- Use system calls only when you need to (why?)
 </details>
 
 <details>
@@ -70,20 +68,23 @@ A shell is a program that provides a command-line interface for users to interac
 </details>
 
 ## How to download
-Go to https://github.com/michaellgans/holbertonschool-simple_shell/tree/main
+- Go to [this link](https://github.com/michaellgans/holbertonschool-simple_shell/tree/main)
 
-Download files or copy the clone URL
-![github_how_to](https://github.com/michaellgans/holbertonschool-simple_shell/assets/126801159/2000dcfb-498b-4f79-81d5-a048fca9bd57)
+- Download files or copy the clone URL
+
+<img src="https://github.com/michaellgans/holbertonschool-simple_shell/assets/126801159/2000dcfb-498b-4f79-81d5-a048fca9bd57" width="50%" height="auto">
+
+***
 
 ## How to use program
-#### Flowchart
+### Flowchart
 ![flowchart_process_SHELL](https://github.com/michaellgans/holbertonschool-simple_shell/assets/126801159/bb039cd2-ec91-4f56-b79c-be9333d1ca32)
 
-#### Compiler
+### Compiler
 ```
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
 ```
-#### Testing
+### Testing
 Your shell should work like this in interactive mode:
 ```
 $ ./hsh
@@ -107,20 +108,19 @@ hsh main.c shell.c test_ls_2
 hsh main.c shell.c test_ls_2
 $
 ```
+
+***
+
 ## Program Contents
-<details>
-<summary>Files</summary></summary>
-<br>
 
   File|Prototype|Description|
 |----------|----------|-----------|
-|[simple_shell.c](https://github.com/michaellgans/holbertonschool-simple_shell/blob/main/README.md)|`int main(int argc, char **argv, char **env)`|Main function/Source code
+|[simple_shell.c](https://github.com/michaellgans/holbertonschool-simple_shell/blob/main/README.md)|`int main(int argc, char **argv, char **env)`|Main function
+|[tokenize.c](https://github.com/michaellgans/holbertonschool-simple_shell/blob/main/tokenize.c)|`char **tokenize(char *string, char *delimiters, char **tokens_array)`|Sections input for processing the called command| 
+|[find_path.c](https://github.com/michaellgans/holbertonschool-simple_shell/blob/main/find_path.c)|`int find_path(char **path_array, char **args_array)`|Directs operating system to called command|
+|[execute_program.c](https://github.com/michaellgans/holbertonschool-simple_shell/blob/main/execute_program.c)|`int execute_program(char *op_path, char **string_array)`|Executes the called command|
+|[free_helper.c](https://github.com/michaellgans/holbertonschool-simple_shell/blob/main/free_helper.c)|`void free_string_array(char **array)`|Deallocates memory|
 |[main.h](https://github.com/michaellgans/holbertonschool-simple_shell/blob/main/main.h)|Includes libraries, macros, and prototypes|Header file that provides futher instructions for program|
-|[tokenize.c](https://github.com/michaellgans/holbertonschool-simple_shell/blob/main/tokenize.c)|`char **tokenize(char *string, char *delimiters, char **tokens_array)`|To break down input into smaller bits
-|[find_path.c](https://github.com/michaellgans/holbertonschool-simple_shell/blob/main/find_path.c)|`int find_path(char **path_array, char **args_array)`|Finds the direction that program needs to go|
-|[execute_program.c](https://github.com/michaellgans/holbertonschool-simple_shell/blob/main/execute_program.c)|`int execute_program(char *op_path, char **string_array)`|Executes a copy of the process|
-|[free_helper.c](https://github.com/michaellgans/holbertonschool-simple_shell/blob/main/free_helper.c)|`void free_string_array(char **array)`|Function that is responsible for freeing memory|
-</details>
 
-*Created by [Michael Gans](https://github.com/michaellgans) & [Jess Dison](https://github.com/jessasesh)
+Created by [Michael Gans](https://github.com/michaellgans) & [Jess Dison](https://github.com/jessasesh)
 
