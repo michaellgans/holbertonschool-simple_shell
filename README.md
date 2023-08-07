@@ -1,10 +1,13 @@
-# holbertonschool-simple_shell
+# Holbertonschool-Simple_Shell (Jess to insert actual image of Holberton)
 
 ## Introduction
-> Hey there:) Thanks for checking out our shell project! Here we have constructed our own simple shell that emulates the Bourne Again Shell.
+> Hey there! :alien:<br>
+Thanks for checking out our Simple Shell Project. Here we have constructed our own Simple Shell that emulates the _Bourne Again Shell_.<br>
+Our Simple Shell is programmed to handle two built-in functions, which are `env` and `exit`. It is also programmed to be able to interperate commands in path with and without options such as `ls` or  `ls -a -l`.<br>
+We appreicate your interest in this project and we would appreicate any feedback you could give us!
 
 ## What is a shell?
-A shell is a program that provides a command-line interface for users to interact with the computer's operating system. It allows users to execute commands and run programs by typing text commands. 
+A shell is a program that provides a command-line interface for users to interact with the computer's operating system. It allows users to execute commands and run programs by typing text commands.
 
 ## Project Requirements
 <details>
