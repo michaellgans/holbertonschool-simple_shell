@@ -2,17 +2,16 @@
 
 /**
  * find_path - finds the operation by traversing through a path
- * @path: pointer to PATH environmental variable
  * @path_array: array of strings with different directories
- * @args: array of strings of arguments to be executed
+ * @args_array: array of strings of arguments to be executed
  * Return: 1/0
  */
 
 int find_path(char **path_array, char **args_array)
 {
+	struct stat info; /* stores attributes or details */
 	int x = 0; /* iterator */
 	char *temp = NULL; /* temporary pointer */
-	struct stat info; /* stores attributes or details */
 
 	while (path_array[x] != NULL)
 	{

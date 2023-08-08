@@ -7,16 +7,16 @@
  */
 void free_string_array(char **array)
 {
-    unsigned int i = 0;
+	unsigned int i = 0;
 
-    if (!array)
-        return;
-    if (!*array)
-        return;
+	if (!array)
+		return;
+	if (!*array)
+		return;
 
-    for (; array[i]; i++)
-    {
-        free(array[i]);
-    }
-    free(array);
+	for (; array[i]; i++)
+	{
+		free(array[i]);
+	}
+	free(array);
 }
