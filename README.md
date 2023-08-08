@@ -1,4 +1,6 @@
-# Holbertonschool-Simple_Shell (Jess to insert actual image of Holberton)
+![holberton_name 01](https://github.com/michaellgans/holbertonschool-simple_shell/assets/126801159/7242fb14-8882-4d04-83d7-68badd5463f7)
+# Simple_Shell 
+
 
 ## Introduction
 > Hey there! :alien:<br>
@@ -27,9 +29,10 @@ A shell is a program that provides a command-line interface for users to interac
 <details>
 <summary>Allowed Functions & System Calls</summary>
 <br>
-
-- all functions from strings.h
-- access (man 2 access)
+   | |
+|----------|----------|
+|all functions from strings.h|
+|access (man 2 access)|
 - chdir (man 2 chdir)
 - close (man 2 close)
 - closedir (man 3 closedir)
