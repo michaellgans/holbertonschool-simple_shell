@@ -1,4 +1,5 @@
 #include "main.h"
+#include <sys/stat.h>
 
 /**
  * find_path - finds the operation by traversing through a path
@@ -9,7 +10,6 @@
 
 int find_path(char **path_array, char **args_array)
 {
-	struct stat info; /* stores attributes or details */
 	int x = 0; /* iterator */
 	char *temp = NULL; /* temporary pointer */
 
@@ -19,7 +19,7 @@ int find_path(char **path_array, char **args_array)
 		strcpy(temp, path_array[x]); /* start array */
 		strcat(temp, "/"); /* add a slash */
 		strcat(temp, args_array[0]); /* add operation */
-		if (stat(temp, &info) == 0) /* does the program exist? */
+		if (access(temp, F_OK) == 0) /* does the program exist? */
 		{
 			execute_program(temp, args_array);
 			free(temp);
