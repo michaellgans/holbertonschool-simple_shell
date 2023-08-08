@@ -122,7 +122,7 @@ $
 |[tokenize.c](https://github.com/michaellgans/holbertonschool-simple_shell/blob/main/tokenize.c)|`char **tokenize(char *string, char *delimiters, char **tokens_array)`|Sections input for processing the called command| 
 |[find_path.c](https://github.com/michaellgans/holbertonschool-simple_shell/blob/main/find_path.c)|`int find_path(char **path_array, char **args_array)`|Directs operating system to called command|
 |[execute_program.c](https://github.com/michaellgans/holbertonschool-simple_shell/blob/main/execute_program.c)|`int execute_program(char *op_path, char **string_array)`|Executes the called command|
-|[free_helper.c](https://github.com/michaellgans/holbertonschool-simple_shell/blob/main/free_helper.c)|`void free_string_array(char **array)`|Deallocates memory|
+|[free_helper.c](https://github.com/michaellgans/holbertonschool-simple_shell/blob/main/free_helper.c)|`void free_string_array(char **array)` `void free_string(char *str)` `int free_the_mems(char **tokens_array, char **path_array)`|Deallocates memory|
 |[main.h](https://github.com/michaellgans/holbertonschool-simple_shell/blob/main/main.h)|Includes libraries, macros, and prototypes|Header file that provides futher instructions for program|
 
 Created by [Michael Gans](https://github.com/michaellgans) & [Jess Dison](https://github.com/jessasesh)
