@@ -101,7 +101,7 @@ $
 
   File|Prototype|Description|
 |----------|----------|-----------|
-|[simple_shell.c](https://github.com/michaellgans/holbertonschool-simple_shell/blob/main/README.md)|`int main(int argc, char **argv, char **env)`|Main function
+|[simple_shell.c](https://github.com/michaellgans/holbertonschool-simple_shell/blob/main/simple_shell.c)|`int main(int argc, char **argv, char **env)`|Main function
 |[clean_string.c](https://github.com/michaellgans/holbertonschool-simple_shell/blob/main/clean_string.c)|`int cleanstr(char *line)`|Prepares string for processing|
 |[tokenize.c](https://github.com/michaellgans/holbertonschool-simple_shell/blob/main/tokenize.c)|`int tok_num(char *str, char *delims)` `char **tokstr(char *line, char *delims)` `int substrLen(char *str, char *delims)`|Sections input for processing the called command| 
 |[find_path.c](https://github.com/michaellgans/holbertonschool-simple_shell/blob/main/find_path.c)|`int find_path(char **path_array, char **args_array)`|Directs operating system to called command|
