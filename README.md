@@ -119,7 +119,7 @@ $
   File|Prototype|Description|
 |----------|----------|-----------|
 |[simple_shell.c](https://github.com/michaellgans/holbertonschool-simple_shell/blob/main/README.md)|`int main(int argc, char **argv, char **env)`|Main function
-|[tokenize.c](https://github.com/michaellgans/holbertonschool-simple_shell/blob/main/tokenize.c)|`char **tokenize(char *string, char *delimiters, char **tokens_array)`|Sections input for processing the called command| 
+|[tokenize.c](https://github.com/michaellgans/holbertonschool-simple_shell/blob/main/tokenize.c)|`int tok_num(char *str, char *delims)` `char **tokstr(char *line, char *delims)` `int substrLen(char *str, char *delims)`|Sections input for processing the called command| 
 |[find_path.c](https://github.com/michaellgans/holbertonschool-simple_shell/blob/main/find_path.c)|`int find_path(char **path_array, char **args_array)`|Directs operating system to called command|
 |[execute_program.c](https://github.com/michaellgans/holbertonschool-simple_shell/blob/main/execute_program.c)|`int execute_program(char *op_path, char **string_array)`|Executes the called command|
 |[free_helper.c](https://github.com/michaellgans/holbertonschool-simple_shell/blob/main/free_helper.c)|`void free_string_array(char **array)` `void free_string(char *str)` `int free_the_mems(char **tokens_array, char **path_array)`|Deallocates memory|
