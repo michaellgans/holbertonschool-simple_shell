@@ -16,22 +16,23 @@ int execute_program(char *op_path, char **string_array)
 	/* Fork process into child and parent */
 	pid = fork();
 
+	/* Check for error */
 	if (pid == -1)
 	{
-		perror("Error: ");
 		return (FAILURE); /* fork failed */
 	}
-	if (pid == 0) /* child process */
+	/* Child process */
+	if (pid == 0)
 	{
 		execve(op_path, string_array, NULL); /* run program */
-		perror("Error: ");
 		return (FAILURE); /* execve failed */
 	}
-	else /* parent process */
+	/* Parent process */
+	else
 	{
+		/* Wait for child to finish */
 		if (wait(&status) == -1)
 		{
-			perror("Error: ");
 			return (FAILURE); /* wait failed */
 		}
 	}
@@ -39,14 +40,17 @@ int execute_program(char *op_path, char **string_array)
 	/* Check for normal termination */
 	if (WIFEXITED(status))
 	{
+		/* Store exit status of child */
 		exit_status = WEXITSTATUS(status);
 		if (exit_status == 0)
 			return (SUCCESS); /* executed correctly */
 		else
 			return (FAILURE); /* execute failed */
 	}
-	if (WIFSIGNALED(status)) /* child executed by signal */
-		return (FAILURE); /* child killed by signal */
+
+	/* Child killed by signal */
+	if (WIFSIGNALED(status))
+		return (FAILURE);
 
 	return (FAILURE); /* all other cases of failure */
 }

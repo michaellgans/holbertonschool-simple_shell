@@ -2,20 +2,23 @@
 
 /**
  * cleanstr - removes newline chars from user input
- * @line: user input line
- * Return: always 0
+ * @line: pointer to user input
+ * Return: 0/1
  */
 int cleanstr(char *line)
 {
-	int i = 0;
+	int x = 0;
 
-	while (line[i])
+	/* Continue to run until null byte is found */
+	while (line[x])
 	{
-		if (line[i] == '\n')
+		/* If new line character is found */
+		if (line[x] == '\n')
 		{
-			line[i] = '\0';
+			/* Replace with null byte */
+			line[x] = '\0';
 		}
-		i++;
+		x++;
 	}
-	return (0);
+	return (SUCCESS);
 }
